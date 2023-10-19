@@ -24,10 +24,10 @@ namespace starkware {
 */
 class ZiggyStatement : public Statement {
  public:
-  using PublicKeyT = typename ZiggyAir::PublicKeyT;
-  using PrivateKeyT = std::array<std::byte, Blake2s256::kDigestNumBytes>;
-  using SecretPreimageT = typename ZiggyAir::SecretPreimageT;
-  explicit ZiggyStatement(const JsonValue& public_input, std::optional<JsonValue> private_input);
+  using PublicKeyT = typename ZiggyAir::PublicKeyT;                                                        //public key input which is a class instantiated inside ziggy namespace
+  using PrivateKeyT = std::array<std::byte, Blake2s256::kDigestNumBytes>;                                  //private key input using std library from array and byte components to generate bytearray of length 32
+  using SecretPreimageT = typename ZiggyAir::SecretPreimageT;                                              //preimage term, which is generated from publickey, a class formed inside ziggyair namespace
+  explicit ZiggyStatement(const JsonValue& public_input, std::optional<JsonValue> private_input);          //constructor called ziggystatement which takes public_input and private_input as 2 inputs
 
   const Air& GetAir(bool is_zero_knowledge, size_t n_queries) override;
 
